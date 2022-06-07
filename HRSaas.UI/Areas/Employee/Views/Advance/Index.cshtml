@@ -1,0 +1,63 @@
+﻿@section Head{
+    <!-- iCheck for checkboxes and radio inputs -->
+    @*<link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css">*@
+    <!-- Select2 -->
+    <!--<link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">-->
+    <!-- Bootstrap4 Duallistbox -->
+    <!--<link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">-->
+    <!-- BS Stepper -->
+    <!--<link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/bs-stepper/css/bs-stepper.min.css">-->
+    <!-- dropzonejs -->
+    <!--<link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/dropzone/min/dropzone.min.css">-->
+}
+
+@using HRSaas.Entities.Dtos
+@model AdvanceVM
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- general form elements -->
+
+        <div class="card card-primary">
+            <div style="background-color: #52006A " class="card-header">
+                <h3 style="color: #FF7600" class="card-title">Avans Talep Sayfası</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="col-md-6 mx-auto">
+                <form enctype="multipart/form-data" asp-area="Employee" asp-controller="Advance" asp-action="AdvanceAdd">
+                    <div class="card-body">
+                        @*<input type="hidden" asp-for="Id" />*@
+                        <!-- Personel Adı -->
+                        <div class="form-group">
+                            <label for="AdvanceAmount">Avans Miktarı</label>
+                            <input type="text" class="form-control" asp-for="AdvanceAmount" placeholder="Avans Miktarını Giriniz">
+                            <span asp-validation-for="AdvanceAmount" class="text-danger"></span>
+                        </div>
+                        <!-- Personel Soyadı -->
+                        <div class="form-group">
+                            <label for="Comment">Açıklama</label>
+                            <textarea class="form-control" asp-for="Comment" placeholder="Açıklamanızı girebilirsiniz"></textarea>
+                            <span asp-validation-for="Comment" class="text-danger"></span>
+                        </div>
+
+                        <!-- /.card-body -->
+                        <div style="background-color:white;padding-left:0px;" class="card-footer">
+                            <button id="SaveButton" value="Open Modeless popup" onclick="ShowPopup();" style="background-color: #FFA900; color: #52006A;" type="submit" class="btn" data-toggle="modal" data-target="#modal-default">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+                @if (ViewBag.Message != null)
+                {
+                    <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@ViewBag.Message");
+                        }
+                    </script>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

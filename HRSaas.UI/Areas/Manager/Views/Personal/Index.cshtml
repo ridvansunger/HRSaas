@@ -1,0 +1,80 @@
+﻿@using HRSaas.Entities.Dtos;
+@model IEnumerable<PersonalDetailVm>
+
+<div class="row">
+    <div style="background-color: #52006A; width:100%; " class="card-header" id="headingOne">
+        <h2 class="mb-0">
+            <button style="color: #FF7600" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Aktif-Pasif Personel Tablosu
+            </button>
+        </h2>
+    </div>
+    <div class="card-body table-responsive p-0">
+        <table class="table table-head-fixed text-nowrap table-hover  ">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Departman</th>
+                    <th>Ünvan</th>
+                    @*<th>Doğum Tarihi</th>*@
+                    @*<th>Tc</th>*@
+                    <th>İşe Başlama Tarihi</th>
+                    <th>İşten Çıkış Tarihi</th>
+                    <th>Mail</th>
+                    @*<th>Telefon</th>*@
+                    <th>Personel Durumu</th>
+                    <th>Fotoğraf</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    int tableId = 0;
+                    @foreach (var item in Model)
+                    {
+                        tableId += 1;
+                        <tr>
+                            <td>@tableId</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.DepertmentName</td>
+                            <td>@item.TitleName</td>
+                            @*<td>@item.BirthDate.ToString("dd-MMM-yyyy")</td>*@
+                            @*<td>@item.Tc</td>*@
+                            <td>@(((DateTime)item.StartDate).ToString("dd-MMM-yyyy"))</td>
+                            @if (item.EndDate != null)
+                            {
+                                <td>@(((DateTime)item.EndDate).ToString("dd-MMM-yyyy"))</td>
+                            }
+                            else
+                            {
+                                <td><center>-</center></td>
+                            }
+                            <td>@item.Mail</td>
+                            @*<td>@item.Phone</td>*@
+                            @if (item.PersonalIsActive == true)
+                            {
+                                <td><a asp-route-id="@item.Id" asp-area="Manager" asp-controller="Personal" asp-action="DeletePersonal" class="btn btn-success" onclick="return confirm('Personeli pasife almak istiyor musunuz?')">Aktif</a></td>
+                            }
+                            else if (item.PersonalIsActive == false && item.EndDate != null)
+                            {
+                                <td><a asp-route-id="@item.Id" asp-area="Manager" asp-controller="Personal" asp-action="DeletePersonal" class="btn btn-danger"  onclick="return confirm('Personeli aktife almak istiyor musunuz?')" >Pasif</a></td>
+                            }
+                            else
+                            {
+                                <td><a asp-route-id="@item.Id" asp-area="Manager" asp-controller="Personal" asp-action="DeletePersonal" class="btn btn-danger">Pasif</a></td>
+                            }
+
+                            <td><img src="~/Data/Images/@item.Photo" class="img-circle elevation-3 img-size-32" alt="" /></td>
+                            <td><a asp-route-id="@item.Id" asp-area="Manager" asp-controller="Personal" asp-action="PersonalAdd" class="btn btn-outline-success">Güncelle</a></td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

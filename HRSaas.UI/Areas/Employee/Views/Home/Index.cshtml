@@ -1,0 +1,234 @@
+﻿@using HRSaas.Entities.Dtos;
+@model Tuple<IEnumerable<LeaveVM>, IEnumerable<AdvanceVM>, PersonalDetailVm, IEnumerable<PersonalExpenditureVM>>
+
+<div class="card card-solid col-md-6">
+    <div class="card-body pb-0">
+        <div class="row d-flex align-items-stretch">
+
+            <div class="col-md-12">
+                <div class="card bg-light">
+                    <div class="card-header text-muted border-bottom-0">
+                        @*@item.WriterTitle*@
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-7">
+                                <h2 class="lead"><b>@Model.Item3.FirstName @Model.Item3.LastName</b></h2>
+                                <p class="text-muted text-sm"><b>Hakkında: </b> <br>Title:@Model.Item3.TitleName <br />Adres:@Model.Item3.AddressName</p>
+                                <ul class="ml-4 mb-0 fa-ul text-muted">
+                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Mail: @*@item.WriterMail*@</li>
+                                </ul>
+                            </div>
+                            <div class="col-5 text-center">
+                                <img src="~/AdminLTE-3.0.4/dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-right">
+                            @*<a href="#" class="btn btn-sm bg-teal">
+                                    <i class="fas fa-comments">Yazarın Başlıkları</i>
+                                </a>*@
+                            <a asp-route-id="@Model.Item3.Id" asp-controller="Personal" asp-action="Index" class="btn btn-sm btn-primary">
+                                <i class="fas fa-user"></i> Profili Düzenle
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
+                            İzin Taleplerim
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapsing" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-head-fixed text-nowrap table table-hover  ">
+                            <thead>
+                                <tr>
+                                    <th>Numara</th>
+                                    <th>İzin Tipi</th>
+                                    <th>Talep Tarihi</th>
+                                    <th>İzin Başlangıç Tarihi</th>
+                                    <th>İzin Bitiş Tarihi</th>
+                                    <th>Onay Durumu</th>
+                                    <th>Cevap Tarihi</th>
+                                    <th>Yorum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Item1 != null)
+                                {
+                                    int tableId = 0;
+                                    @foreach (var item in Model.Item1)
+                                    {
+                                        tableId += 1;
+                                <tr>
+                                    <td>@tableId</td>
+                                    <td>@item.LeaveTypeName</td>
+                                    <td>@item.RequestDate</td>
+                                    <td>@item.LeaveStartDate.ToString("dd/MMM/yyyy")</td>
+                                    <td>@item.LeaveEndDate.ToString("dd/MMM/yyyy")</td>
+                                    @if (item.SeenByManager == true)
+                                    {
+                                        if (item.ApprovalStatus == true)
+                                        {
+                                            <td><button class="btn btn-block btn-success btn-sm">Onaylandı</button></td>
+                                        }
+                                        else
+                                        {
+                                            <td><button class="btn btn-block btn-danger btn-sm">Reddedildi</button></td>
+                                        }
+                                            
+                                    }
+                                    else
+                                    {
+                                        <td><button class="btn btn-block btn-warning btn-sm">Onay Bekliyor</button></td>
+                                    }
+                                    <td>@(item.ApprovalDate==null?"-": ((DateTime)item.ApprovalDate).ToString("dd/MMM/yyyy"))</td>
+                                    <td>@item.Comment</td>
+                                </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Avans Taleplerim
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapsing" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-head-fixed text-nowrap table table-hover  ">
+                            <thead>
+                                <tr>
+                                    <th>Numara</th>
+                                    <th>Avans Tutarı</th>
+                                    <th>Talep Tarihi</th>
+                                    <th>Onay Durumu</th>
+                                    <th>Cevap Tarihi</th>
+                                    <th>Yorum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Item2 != null)
+                                {
+                                    int tableId = 0;
+                                    @foreach (var item in Model.Item2)
+                                    {
+                                        tableId += 1;
+                                <tr>
+                                    <td>@tableId</td>
+                                    <td>@item.AdvanceAmount </td>
+                                    <td>@item.RequestDate.ToString("dd/MMM/yyyy")</td>
+                                    @if (item.SeenByManager == true)
+                                    {
+                                        if (item.ApprovalStatus == true)
+                                        {
+                                            <td><button class="btn btn-block btn-success btn-sm">Onaylandı</button></td>
+                                        }
+                                        else
+                                        {
+                                            <td><button class="btn btn-block btn-danger btn-sm">Reddedildi</button></td>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <td><button class="btn btn-block btn-warning btn-sm">Onay Bekliyor</button></td>
+                                    }
+                                    <td>@(item.ApprovalDate==null?"-":((DateTime)item.ApprovalDate).ToString("dd/MMM/yyyy"))</td>
+                                    <td>@item.Comment</td>
+                                </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                            Harcama Bildirimlerim
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseThree" class="collapsing" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-head-fixed text-nowrap table table-hover  ">
+                            <thead>
+                                <tr>
+                                    <th>Numara</th>
+                                    <th>Harcama Tarihi</th>
+                                    <th>Harcama Miktarı</th>
+                                    <th>Onay Durumu</th>
+                                    <th>Cevap Tarihi</th>
+                                    <th>Yorum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Item4 != null)
+                                {
+                                    int tableId = 0;
+                                    @foreach (var item in Model.Item4)
+                                    {
+                                        tableId += 1;
+                                <tr>
+                                    <td>@tableId</td>
+                                    <td>@(((DateTime)item.ExpenditureDate).ToString("dd/MMM/yyyy")) </td>
+                                    <td>@item.ExpenditureAmount.ToString("N")</td>
+                                    @if (item.SeenByManager == true)
+                                    {
+                                        if (item.Status == true)
+                                        {
+                                            <td><button class="btn btn-block btn-success btn-sm">Onaylandı</button></td>
+                                        }
+                                        else
+                                        {
+                                            <td><button class="btn btn-block btn-danger btn-sm">Reddedildi</button></td>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <td><button class="btn btn-block btn-warning btn-sm">Onay Bekliyor</button></td>
+                                    }
+                                    <td>@(item.ApprovalDate==null? "-" : ((DateTime)item.ApprovalDate).ToString("dd-MMM-yyyy"))</td>
+                                    <td>@item.ExDescription</td>
+                                </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Script{
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+}
+
+

@@ -1,0 +1,116 @@
+﻿@model Tuple<List<CompanyVM>, List<PackageVM>>
+<div class="row">
+    <div class="col-md-12">
+        <div class="callout callout-info">
+            <h5>Site Yöneticisi Anasayfası</h5>
+        </div>
+        <div class="accordion" id="accordionExample">
+            <div class="card col-md-12">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
+                            Sistemde Tanımlı Şirketler Listesi
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapsing" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-head-fixed text-nowrap table table-hover  ">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Şirket Adı</th>
+                                    <th>Vergi Numarası</th>
+                                    <th>Telefon</th>
+                                    <th>Mail</th>
+                                    <th>Kullandığı Paket</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @if (Model.Item1!=null)
+                                {
+                                    int tableId = 0;
+                                    foreach (var t0 in Model.Item1)
+                                    {
+                                        tableId++;
+                                        <tr>
+                                            <td>@tableId</td>
+                                            <td>@t0.CompanyName</td>
+                                            <td>@t0.TaxIdNumber</td>
+                                            <td>@t0.Phone</td>
+                                            <td>@t0.CompanyMail</td>
+                                            <td>@t0.PackageName</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="6" class="text-danger">Listelenecek kayıt bulunamadı</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-md-12">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Sistemde Tanımlı Paketler
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body  pb-0">
+                        <div class="row">
+                            @if (Model.Item2 != null)
+                            {
+                                int packageId = 0;
+                                foreach (var t0 in Model.Item2)
+                                {
+                                    packageId++;
+                                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                        <div class="card bg-light d-flex flex-fill">
+                                            <div class="card-header  border-bottom-0 text-warning ">
+                                                Paket @packageId
+                                            </div>
+                                            <div class="card-body pt-0">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <h4 class="lead text-danger"><b>@t0.PackageName</b></h4>
+                                                        <hr />
+                                                        <ul class="ml-4 mb-0 fa-ul ">
+                                                            <li class="mb-3" ><span class="fa-li"><i class="fa-solid fa-users"></i></span><b> Kullanıcı Sayısı : </b> @t0.UserCount</li>
+                                                            <li class="mb-3"><span class="fa-li"><i class="fa-solid fa-clock"></i></span> <b> Paket Süresi (Gün) : </b> @t0.DurationTime</li>
+                                                            <li class="mb-3"><span class="fa-li"><i class="fa-solid fa-money-bill-wave"></i></span> <b> Paket Fiyatı : </b> @t0.Price.ToString("N")</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-5 text-center">
+                                                        <img src="~/Data/Images/package.png" alt="user-avatar" class="img-circle img-fluid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="text-right">
+                                                    <hr />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <span class="mx-auto text-danger mb-3">Sistemde tanımlı paket bulunamadı.</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

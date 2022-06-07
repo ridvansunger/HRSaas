@@ -1,0 +1,93 @@
+﻿@section Head{ }
+@section Script{ }
+
+@using HRSaas.Entities.Dtos
+@model LeaveVM
+<div class="row">
+    <div class="col-md-12">
+        <div class="callout callout-info">
+            <h5>Personel İzni Onay Ekranı</h5>
+        </div>
+        <div class="invoice p-3 mb-3 col-md-9 mx-auto rounded">
+            <div class="col-md-6 mx-auto mt-3">
+                <!--Personel Adı-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Personel Adı Soyadı </label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="NameAndSurname" id="NameAndSurname">
+                    </div>
+                </div>
+                <!--Departmanı-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Departmanı</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="DepartmentName" id="DepartmentName">
+                    </div>
+                </div>
+                <!--Personel Ünvanı-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Ünvanı</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="TitleName" id="TitleName">
+                    </div>
+                </div>
+                <!--İzin Tipi-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">İzin Tipi</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="LeaveTypeName" id="LeaveTypeName">
+                    </div>
+                </div>
+                <!--İzin Başlangıç Tarihi-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">İzin Başlangıç Tarihi</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="LeaveStartDate" id="LeaveStartDate">
+                    </div>
+                </div>
+                <!--İzin Bitiş Tarihi-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">İzin Bitiş Tarihi</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="LeaveEndDate" id="LeaveEndDate">
+                    </div>
+                </div>
+                <!--Total Yıllık İzin Hakkı-->
+                <!--<div class="form-group row">
+                    <label class="col-4 col-form-label">Yıllık İzin Hakkı</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="AnnualLeave" id="AnnualLeave">
+                    </div>
+                </div>-->
+                <!--Kullandığı İzin Hakkı-->
+                <!--<div class="form-group row">
+                    <label class="col-4 col-form-label">Kullandığı İzin Hakkı</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="UsedDayOff" id="UsedDayOff">
+                    </div>
+                </div>-->
+                <!--Bizle Çalıştığı Gün Sayısı-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Bizle Çalıştığı Gün Sayısı</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="TotalWorkDayNumber" id="TotalWorkDayNumber">
+                    </div>
+                </div>
+                <!--İzin Nedeni-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">İzin Yorumu</label>
+                    <div class="col-8">
+                        <textarea rows="3" class=" form-control" disabled asp-for="Comment" id="Comment"></textarea>
+                    </div>
+                </div>
+                <!--Personel Adı-->
+                <div class="form-group row">
+                    <div class="col-md-12 d-flex flex-row-reverse">
+                        <a asp-route-id="@Model.Id" asp-area="Manager"  asp-action="LeaveAccept" asp-controller="Leave" type="button" class="col-md-4 btn btn-outline-success btn-sm">Onayla</a>
+                        <a asp-area="Manager" asp-route-id="@Model.Id" asp-action="LeaveReject" asp-controller="Leave" type="button" class="col-md-4 btn btn-outline-danger btn-sm">Reddet</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

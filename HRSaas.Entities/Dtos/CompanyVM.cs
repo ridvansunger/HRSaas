@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HRSaas.Entities.Dtos
+{
+    public class CompanyVM
+    {
+        public int Id { get; set; }
+        public string TaxIdNumber { get; set; }
+        public string CompanyName { get; set; }
+        public string Logo { get; set; }
+        public string Phone { get; set; }
+        public string CompanyMail { get; set; }
+        public string Address { get; set; }
+        public string Description { get; set; }
+        public int? PackageId { get; set; }
+        public string PackageName { get; set; }
+    }
+}

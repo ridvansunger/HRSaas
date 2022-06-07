@@ -1,0 +1,276 @@
+﻿@section Head{
+
+}
+
+@using HRSaas.Entities.Dtos
+@model PersonalDetailVm
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- general form elements -->
+
+        <div class="card card-primary">
+            <div style="background-color: #52006A " class="card-header">
+                <h3 style="color: #FF7600" class="card-title">Personel Ekleme</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <div class="col-md-6 mx-auto">
+                <form enctype="multipart/form-data" asp-area="SiteManager" asp-controller="Manager" asp-action="PersonalAdd">
+                    <div class="card-body">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="AddressId" />
+                        <!-- Personel Adı -->
+                        <div class="form-group">
+                            <label for="FirstName">Personel Adı</label>
+                            <input type="text" class="form-control" asp-for="FirstName" id="FirstName" placeholder="Personel Adını giriniz.">
+                            @*<span asp-validation-for="FirstName" class="text-danger"></span>*@
+                        </div>
+                        <!-- Personel Soyadı -->
+                        <div class="form-group">
+                            <label for="LastName">Personel Soyadı</label>
+                            <input type="text" class="form-control" asp-for="LastName" id="LastName" placeholder="Personel soyadını giriniz.">
+                            @*<span asp-validation-for="LastName" class="text-danger"></span>*@
+                        </div>
+                        <!-- Personel TC -->
+                        <div class="form-group">
+                            <label for="Tc">Kimlik Numarası</label>
+                            <input type="text" class="form-control" asp-for="Tc" id="Tc" placeholder="Personel TC'sini giriniz." onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="11">
+                            <a style="color:red">@ViewBag.msg</a>
+                            <a style="color:red">@ViewBag.tcmsg</a>
+                            @*<span asp-validation-for="Tc" class="text-danger"></span>*@
+                        </div>
+                        <!-- Personel Mail -->
+                        <div class="form-group">
+                            <label for="Mail">Mail</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control col-md-8" asp-for="Mail" id="Mail" placeholder="Personel mailini giriniz.">
+                                @*<span class="input-group-text col-md-4">@ViewBag.EmailExtension</span>*@
+                            </div>
+                            @*<span asp-validation-for="Mail" class="text-danger"></span>*@
+                        </div>
+                        <!-- Personel Password -->
+                        <div class="form-group">
+                            <label for="Password">Şifre</label>
+                            <div class="input-group" data-target-input="nearest">
+                                <input type="password" asp-for="Password" class="form-control" id="Password" placeholder="Şifre giriniz.">
+                                <div class="input-group-append">
+                                    <div class="input-group-text"><i class="nav-icon fa-solid fa-eye" id="togglePassword"></i></div>
+                                </div>
+                            </div>
+                            @*<span asp-validation-for="Password" class="text-danger"></span>*@
+                        </div>
+                        <!-- Personel BirthDate -->
+                        <div class="form-group">
+                            <label>Personel Doğum Tarihi</label>
+                            <div class="input-group date" id="reservationdate3" data-target-input="nearest">
+                                <input asp-for="BirthDate" id="BirthDate" type="text" class="form-control datetimepicker-input" data-target="#reservationdate3">
+                                <div class="input-group-append" data-target="#reservationdate3" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            @*<span asp-validation-for="BirthDate" class="text-danger"></span>*@
+                        </div>
+                        <!-- Personel Gender -->
+                        <div class="form-group">
+                            <label for="Gender">Personel Cinsiyeti</label>
+                            <select asp-for="Gender" class="custom-select rounded-0" id="Gender">
+                                @*<option value="-1">Seçim yapın.</option>*@
+                                <option value="true">Erkek</option>
+                                <option value="false">Kadın</option>
+                            </select>
+                            @*<span asp-validation-for="Gender" class="text-danger"></span>*@
+                        </div>
+                        <!-- Personel Telefon -->
+                        <!-- phone mask -->
+                        <div class="form-group">
+                            <label>Telefon</label>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                </div>
+                                <input type="text" asp-for="Phone" class="form-control" id="phone">
+                            </div>
+                            @*<span asp-validation-for="Phone" class="text-danger"></span>*@
+                        </div>
+
+                        <!-- Personel Maaş -->
+                        <div class="form-group">
+                            <label>Maaş</label>
+
+                            <div class="input-group">
+                                <input type="text" asp-for="Salary" class="form-control" id="salary">
+                            </div>
+                            @*<span asp-validation-for="Salary" class="text-danger"></span>*@
+                        </div>
+
+                        <!-- Personel Giriş Tarihi -->
+                        <div class="form-group">
+                            <label>Personel Giriş Tarihi</label>
+                            <div class="input-group date" id="reservationdate1" data-target-input="nearest">
+                                <input asp-for="StartDate" type="text" id="StartDate" class="form-control datetimepicker-input" data-target="#reservationdate1">
+
+                                <div class="input-group-append" data-target="#reservationdate1" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            @*<span asp-validation-for="StartDate" class="text-danger"></span>*@
+                        </div>
+                        <!-- Personel Çıkış Tarihi -->
+                        <div class="form-group">
+                            <label>Personel Çıkış Tarihi</label>
+                            <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                                <input asp-for="EndDate" type="text" id="EndDate" class="form-control datetimepicker-input" data-target="#reservationdate2">
+
+                                <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            @*<span asp-validation-for="EndDate" class="text-danger"></span>*@
+                        </div>
+                        <!-- Personel IsActive -->
+                        <div class="form-group">
+                            <label for="PersonalIsActive">Personel Aktif Çalışan Mı?</label>
+                            <select asp-for="PersonalIsActive" class="custom-select rounded-0" id="PersonalIsActive">
+                                <option value="true">Evet</option>
+                                <option value="false">Hayır</option>
+                            </select>
+
+                        </div>
+                        <!-- Departman Select -->
+                        <div class="form-group">
+                            <label for="DepartmentId">Personel Departmanı</label>
+                            <select id="DepartmentId" asp-for="DepartmentId" asp-items="(SelectList)ViewBag.DepartmentList" class="custom-select rounded-0">
+                                <option>Departman seçiniz.</option>
+                            </select>
+                            @*<span asp-validation-for="DepartmentId" class="text-danger"></span>*@
+                        </div>
+                        <!-- Tittle Select -->
+                        <div class="form-group">
+                            <label for="TitleId">Personel Ünvanı</label>
+                            <select id="TitleId" asp-for="TitleId" asp-items="(SelectList)ViewBag.TitleList" class="custom-select rounded-0">
+                                <option>Ünvan seçiniz.</option>
+                            </select>
+                            @*<span asp-validation-for="TitleId" class="text-danger"></span>*@
+                        </div>
+                        <!-- File Upload -->
+                        <div class="form-group">
+                            <label for="exampleInputFile">Personel Fotoğrafı </label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input asp-for="ProfileImage" type="file" class="custom-file-input" id="exampleInputFile">
+                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Şirket Seç-->
+                        <div class="form-group">
+                            <label>Şirket</label>
+                            <select id="CompanyId" asp-for="CompanyId" class="custom-select rounded-0" asp-items="(SelectList)ViewBag.CompanyList">
+                                <option>Şirket seçiniz.</option>
+                            </select>
+                            @*<span asp-validation-for="CityId" class="text-danger"></span>*@
+                        </div>
+                        <!--City Select-->
+                        <div class="form-group">
+                            <label>Şehir</label>
+                            <select id="CityId" asp-for="CityId" class="custom-select rounded-0" asp-items="(SelectList)ViewBag.CityList">
+                                <option>Şehir seçiniz.</option>
+                            </select>
+                            @*<span asp-validation-for="CityId" class="text-danger"></span>*@
+                        </div>
+                        <!--County Select-->
+                        <div class="form-group">
+                            <label>İlçe</label>
+                            <select id="CountyId" asp-for="CountyId" class="custom-select rounded-0" asp-items="(SelectList)ViewBag.CountyList">
+                                <option>İlçe seçiniz.</option>
+                            </select>
+                            @*<span asp-validation-for="CityId" class="text-danger"></span>*@
+                        </div>
+                        <!-- Address Name -->
+                        <div class="form-group">
+                            <label for="AddressName">Adres Başlığı</label>
+                            <input type="text" class="form-control" asp-for="AddressName" id="AddressName" placeholder="Adres başlığını giriniz.">
+                        </div>
+                        <!-- Address Description -->
+                        <div class="form-group">
+                            <label for="AddressDescription">Açık Adres</label>
+                            <textarea class="form-control" asp-for="AddressDescription" id="AddressDescription" rows="2" placeholder="Adres detayını giriniz."></textarea>
+                        </div>
+                        <!-- Address Postal Code -->
+                        <div class="form-group">
+                            <label for="PostalCode">Posta Kodu</label>
+                            <input type="text" class="form-control" asp-for="PostalCode" id="PostalCode" placeholder="Posta kodunu giriniz.">
+
+                        </div>
+                        <!-- /.card-body -->
+                        <div style="background-color:white;padding-left:0px;" class="card-footer">
+                            <button id="SaveButton" value="Open Modeless popup" onclick="ShowPopup();" style="background-color: #FFA900; color: #52006A;" type="submit" class="btn" data-toggle="modal" data-target="#modal-default">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Script{
+    <!-- bs-custom-file-input -->
+    <script src="~/lib/AdminLTE-3.2.0/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <!-- InputMask -->
+    <script src="~/lib/AdminLTE-3.2.0/plugins/moment/moment.min.js"></script>
+    <script src="~/lib/AdminLTE-3.2.0/plugins/inputmask/jquery.inputmask.min.js"></script>
+    <script>
+        $(function () {
+            $("#phone").inputmask({ "mask": "(999) 999-9999" });
+            $("#FirstName,#LastName").inputmask({ regex: "[a-zA-Z- ]*" });
+            $("#BirthDate,#StartDate,#EndDate").inputmask({ regex: "[0-9-/]*" });
+
+
+            $("#togglePassword").click(function () {
+                $("#Password").attr("type", $("#Password").attr("type") == 'password' ? 'text' : 'password') ;
+            });
+
+
+            //$("#btnNo").click(function () {
+            //    alert("Handler for .click() called.");
+            //});
+
+            bsCustomFileInput.init();
+            //Date picker
+            $('#reservationdate1,#reservationdate3,#reservationdate2').datetimepicker({
+                format: 'DD/MM/YYYY'
+            });
+            $('#CityId').change(function () {
+                var selectedCityId = $('#CityId option:selected').attr('value');
+                //console.log(selectedCityId);
+                $.ajax({
+                    url: '@Url.Action("GetCountiesByCityId", "Manager", new { area = "SiteManager" } )',
+                    type: "POST",
+                    data: JSON.stringify(selectedCityId),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        //console.log(data[5].text);
+                        //console.log(data[5].value);
+                        $('#CountyId')
+                            .empty();
+                        $.each(data, function () {
+                            $("#CountyId").append($("<option></option>").val(this['value']).html(this['text']));
+                        });
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        console.log(response);
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+}

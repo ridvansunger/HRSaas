@@ -1,0 +1,65 @@
+﻿@section Head{ }
+@section Script{ }
+
+@using HRSaas.Entities.Dtos
+@model PackageVM
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div style="background-color: #52006A " class="card-header">
+                <h3 style="color: #FF7600" class="card-title">Paket Ekleme Sayfası</h3>
+            </div>
+            <div class="col-md-6 mx-auto">
+                <form enctype="multipart/form-data" asp-area="SiteManager" asp-controller="Package" asp-action="Index">
+                    <div class="card-body">
+                        <!--Paket Adı-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Paket Adı</label>
+                            <div class="col-6">
+                                <input type="text" class=" form-control" asp-for="PackageName" id="PackageName">
+                                <span class="text-danger" asp-validation-for="PackageName"></span>
+                            </div>                            
+                        </div>
+                        <!--Kullanıcı Sayısı-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Kullanıcı Sayısı</label>
+                            <div class="col-6">
+                                <input type="text" class=" form-control" asp-for="UserCount" id="UserCount">
+                                <span class="text-danger" asp-validation-for="UserCount"></span>
+                            </div>                            
+                        </div>
+                        <!--Paket Süresi-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Paket Süresi</label>
+                            <div class="col-6">
+                                <input type="text" class=" form-control" asp-for="DurationTime" id="DurationTime" placeholder="Gün bazında giriş yapınız.">
+                                <span class="text-danger" asp-validation-for="DurationTime"></span>
+                            </div>                            
+                        </div>
+                        <!--Ücret-->
+                        <div class="form-group row">
+                            <div class=""></div>
+                            <label class="col-4 col-form-label">Ücret</label>
+                            <div class="col-6">
+                                <input type="text" class=" form-control" asp-for="Price" id="Price">
+                                <span class="text-danger" asp-validation-for="Price"></span>
+                            </div>                            
+                        </div>
+                        <div style="background-color:white;padding-left:0px;" class="card-footer">
+                            <button id="SaveButton" value="Open Modeless popup" style="background-color: #FFA900; color: #52006A;" type="submit" class="btn">Kaydet</button>
+                        </div>
+
+                    </div>
+                </form>
+                @if (TempData["packageMessage"] != null)
+                {
+                    <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@TempData["packageMessage"]");
+                        }
+                    </script>
+                }
+            </div>
+        </div>
+    </div>
+</div>

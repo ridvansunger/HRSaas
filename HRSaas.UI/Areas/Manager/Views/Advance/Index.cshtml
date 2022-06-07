@@ -1,0 +1,87 @@
+﻿@section Head{ }
+@section Script{ }
+
+
+@using HRSaas.Entities.Dtos
+@model AdvanceVM
+<div class="row">
+    <div class="col-md-12">
+        <div class="callout callout-info">
+            <h5>Personel Avans Onay Ekranı</h5>
+        </div>
+        <div class="invoice p-3 mb-3 col-md-9 mx-auto rounded">
+            <div class="col-md-6 mx-auto mt-3">
+                <!--Personel Adı-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Personel Adı Soyadı</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="NameAndSurname" id="NameAndSurname">
+                    </div>
+                </div>
+                <!--Personel Sunamae-->
+                <!--<div class="form-group row">
+        <label class="col-4 col-form-label">Personel Adı</label>
+        <div class="col-6">
+            <input type="text" class=" form-control" disabled asp-for="LastName" id="LastName">
+        </div>
+    </div>-->
+                <!--Departmanı-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Departmanı</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="DepartmentName" id="DepertmentName">
+                    </div>
+                </div>
+                <!--Personel Ünvanı-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Ünvanı</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="TitleName" id="TitleName">
+                    </div>
+                </div>
+                <!--Aylık Maaşı-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Aylık Maaşı</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="Salary" id="Salary">
+                    </div>
+                </div>
+                <!--Avans Miktarı-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Avans Miktarı</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="AdvanceAmount" id="AdvanceAmount">
+                    </div>
+                </div>
+                <!--Talep Ettiği Tarih-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Talep Ettiği Tarih</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="RequestDate" id="AdvanceAmount">
+                    </div>
+                </div>
+                <!--Talep Onay Tarih-->
+                <!--<div class="form-group row">
+                    <label class="col-4 col-form-label">Talep Ettiği Tarih</label>
+                    <div class="col-6">
+                        <input type="text" class=" form-control" disabled asp-for="ApprovalDate" id="AdvanceAmount">
+                    </div>
+                </div>-->
+                <!--Talep Yorumu-->
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Talep Yorumu</label>
+                    <div class="col-8">
+                        <textarea rows="3" class=" form-control" disabled asp-for="Comment" id="Comment"></textarea>
+                    </div>
+                </div>
+                <!--Onayla Reddet Butonları-->
+                <div class="form-group row">
+                    <div class="col-md-12 d-flex flex-row-reverse">
+                        <a asp-area="Manager" asp-route-id="@Model.Id" asp-action="AdvanceAccept" asp-controller="Advance" type="button" class="col-md-4 btn btn-outline-success btn-sm">Onayla</a>
+                        <a asp-area="Manager" asp-route-id="@Model.Id" asp-action="AdvanceReject" asp-controller="Advance" type="button" class="col-md-4 btn btn-outline-danger btn-sm">Reddet</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

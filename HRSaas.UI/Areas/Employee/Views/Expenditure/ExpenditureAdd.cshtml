@@ -1,0 +1,82 @@
+﻿@section Head{
+
+}
+
+@model PersonalExpenditureVM
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- general form elements -->
+
+        <div class="card card-primary">
+            <div style="background-color: #52006A " class="card-header">
+                <h3 style="color: #FF7600" class="card-title">Harcama Bildirim Ekranı</h3>
+            </div>
+            <div class="col-md-6 mx-auto">
+                <form enctype="multipart/form-data" asp-area="Employee" asp-controller="Expenditure" asp-action="ExpenditureAdd">
+                    <div class="card-body">
+                        <input type="hidden" asp-for="PersonalId" />
+                        <!-- >Harcama Detayı -->
+                        <div class="form-group">
+                            <label for="FirstName">Harcama Detayı</label>
+                            <textarea rows="2" class="form-control" asp-for="ExDescription" id="FirstName" placeholder="Harcama detayını giriniz."></textarea>
+                            <span asp-validation-for="ExDescription" class="text-danger"></span>
+                        </div>
+                        <!-- Harcama Tarihi -->
+                        <div class="form-group">
+                            <label>Harcama Tarihi</label>
+                            <div class="input-group date" id="reservationdate3" data-target-input="nearest">
+                                <input asp-for="ExpenditureDate" id="BirthDate" type="text" class="form-control datetimepicker-input" data-target="#reservationdate3">
+                                <div class="input-group-append" data-target="#reservationdate3" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <span asp-validation-for="ExpenditureDate" class="text-danger"></span>
+                        </div>
+                        <!-- Harcama Tutarı -->
+                        <div class="form-group">
+                            <label>Harcama Tutarı</label>
+                            <div class="input-group">
+                                <input type="text" data-symbol="R$ " data-thousands="." data-decimal=","  asp-for="ExpenditureAmount" class="form-control" id="salary">
+                            </div>
+                            <span asp-validation-for="ExpenditureAmount" class="text-danger"></span>
+                        </div>
+                        <!-- Harcama Dosyası -->
+                        <div class="form-group">
+                            <label for="exampleInputFile">Harcama Belgesi </label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input asp-for="File" type="file" class="custom-file-input" id="exampleInputFile">
+                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                </div>
+                            </div>
+                            <span asp-validation-for="File" class="text-danger"></span>
+                        </div>
+
+                        <!-- /.card-body -->
+                        <div style="background-color:white;padding-left:0px;" class="card-footer">
+                            <button  type="submit" class="btn btn-success">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Script{
+    <!-- bs-custom-file-input -->
+    <script src="~/lib/AdminLTE-3.2.0/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script src="~/jquery-maskmoney/jquery.maskMoney.min.js"></script>
+    <script>
+        $(function () {
+            $('#salary').maskMoney();
+            bsCustomFileInput.init();
+            //Date picker
+            $('#reservationdate3').datetimepicker({
+                format: 'DD/MM/YYYY'
+            });
+        });
+    </script>
+}

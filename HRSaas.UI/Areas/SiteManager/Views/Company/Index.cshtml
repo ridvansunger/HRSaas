@@ -1,0 +1,77 @@
+﻿@*@section Head{ }
+    @section Script{ }*@
+
+@using HRSaas.Entities.Dtos
+@model CompanyVM
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div style="background-color: #52006A " class="card-header">
+                <h3 style="color: #FF7600" class="card-title">Şirket Ekleme Sayfası</h3>
+            </div>
+            <div class="col-md-6 mx-auto">
+                <form enctype="multipart/form-data" asp-area="SiteManager" asp-controller="Company" asp-action="Index">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Şirket Adı</label>
+                            <div class="col-6">
+                                <input type="text" class=" form-control" asp-for="CompanyName" id="CompanyName">
+                                <span class="text-danger" asp-validation-for="CompanyName"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Telefon</label>
+                            <div class="col-6">
+                                <input type="number" class=" form-control" asp-for="Phone" id="Phone">
+                                <span class="text-danger" asp-validation-for="Phone"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Şirket Maili</label>
+                            <div class="col-6">
+                                <input type="email" class=" form-control" asp-for="CompanyMail" id="CompanyMail">
+                                <span class="text-danger" asp-validation-for="CompanyMail"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Vergi Numarası</label>
+                            <div class="col-6">
+                                <input type="text" class=" form-control" asp-for="TaxIdNumber" id="TaxIdNumber">
+                                <span class="text-danger" asp-validation-for="TaxIdNumber"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Adres</label>
+                            <div class="col-6">
+                                <textarea class="form-control" asp-for="Address" id="Address" rows="2" placeholder="Adres giriniz"></textarea>
+                                <span class="text-danger" asp-validation-for="Address"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Açıklama</label>
+                            <div class="col-6">
+                                <textarea class="form-control" asp-for="Description" id="Description" rows="2" placeholder="Açıklama giriniz"></textarea>
+                                <span class="text-danger" asp-validation-for="Description"></span>
+                            </div>
+                        </div>
+
+                        <div style="background-color:white;padding-left:0px;" class="card-footer">
+                            <button id="SaveButton" value="Open Modeless popup" style="background-color: #FFA900; color: #52006A;" type="submit" class="btn">Kaydet</button>
+                        </div>
+
+                    </div>
+                </form>
+                @if (TempData["companyMessage"] != null)
+                {
+                    <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@TempData["companyMessage"]");
+                        }
+                    </script>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>

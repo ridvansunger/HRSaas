@@ -1,0 +1,80 @@
+﻿@section Head{ }
+@section Script{ }
+
+@using HRSaas.Entities.Dtos
+@model IEnumerable<LeaveVM>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
+                            İzin Talep Listesi
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapsing" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-head-fixed text-nowrap table table-hover  ">
+                            <thead style="text-align:center">
+                                <tr>
+                                    <th>Numara</th>
+                                    <th>Adı Soyadı</th>
+                                    <th>Departman</th>
+                                    <th>Ünvan</th>
+                                    <th>İzin Tipi</th>
+                                    <th>İzin Başlangıç Tarihi</th>
+                                    <th>İzin Bitiş Tarihi</th>
+                                    <th>Onay Durumu</th>
+                                    <th>Cevap Tarihi</th>
+                                    <th>Yorum</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align:center">
+                                @if (Model != null)
+                                {
+                                    int tableId = 0;
+                                    @foreach (var item in Model)
+                                    {
+                                        tableId += 1;
+                                        <tr>
+
+                                            <td>@tableId</td>
+                                            <td>@item.NameAndSurname </td>
+                                            <td>@item.DepartmentName</td>
+                                            <td>@item.TitleName</td>
+                                            <td>@item.LeaveTypeName</td>
+                                            <td>@(((DateTime)item.LeaveStartDate).ToString("dd-MMM-yyyy"))</td>
+                                            <td>@(((DateTime)item.LeaveEndDate).ToString("dd-MMM-yyyy"))</td>
+                                            @if (item.ApprovalStatus == true)
+                                            {
+                                                <td><a class="btn btn-block btn-success">Onaylandı</a></td>
+                                            }
+                                            else if (item.ApprovalDate == null)
+                                            {
+                                                <td><a class="btn btn-block btn-warning">Onay Sürecinde</a></td>
+                                            }
+                                            else
+                                            {
+                                                <td><a class="btn btn-block btn-danger">Onaylanmadı</a></td>
+                                            }
+                                            <td>@item.ApprovalDate</td>
+                                            <td>@item.Comment</td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

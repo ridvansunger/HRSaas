@@ -1,0 +1,48 @@
+﻿@section Head{}
+@model AdvanceVM
+<div class="row">
+    <div class="col-md-12">
+        <!-- general form elements -->
+
+        <div class="card card-primary">
+            <div style="background-color: #52006A " class="card-header">
+                <h3 style="color: #FF7600" class="card-title">Avans Talep Sayfası</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="col-md-6 mx-auto">
+                <form enctype="multipart/form-data" asp-area="Employee" asp-controller="Advance" asp-action="AdvanceAdd">
+                    <div class="card-body">
+                        <input type="hidden" asp-for="PersonalId"/>
+                        <!-- Personel Adı -->
+                        <div class="form-group">
+                            <label for="AdvanceAmount">Avans Miktarı</label>
+                            <input type="text" class="form-control" asp-for="AdvanceAmount" placeholder="Avans Miktarını Giriniz">
+                            <span asp-validation-for="AdvanceAmount" class="text-danger"></span>
+                        </div>
+                        <!-- Personel Soyadı -->
+                        <div class="form-group">
+                            <label for="Comment">Açıklama</label>
+                            <textarea class="form-control" asp-for="Comment" placeholder="Açıklamanızı girebilirsiniz"></textarea>
+                            <span asp-validation-for="Comment" class="text-danger"></span>
+                        </div>
+
+                        <!-- /.card-body -->
+                        <div style="background-color:white;padding-left:0px;" class="card-footer">
+                            <button style="background-color: #FFA900; color: #52006A;" type="submit" class="btn">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+                @if (ViewBag.Message != null)
+                {
+                    <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@ViewBag.Message");
+                        }
+                    </script>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

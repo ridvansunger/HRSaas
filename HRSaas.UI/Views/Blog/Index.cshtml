@@ -1,0 +1,146 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/HomePageUtilites.css" rel="stylesheet" />
+    <link href="~/css/HomePage.css" rel="stylesheet" />
+    <title>Read Our Blog</title>
+</head>
+<body id="home">
+    <header class="hero blog">
+        <div id="navbar" class="navbar top">
+            <h1 class="logo">
+                <span class="text-primary"> <i class="fa-brands fa-sass"></i> HR </span>SaaS
+            </h1>
+            <nav>
+                <ul>
+                    <li><a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <h1>Blog </h1>
+        </div>
+    </header>
+    <main>
+        <article class="flex-columns">
+            <div class="row">
+                <div class="column">
+                    <div class="column-1">                       
+                        <img src="~/Data/image_resources/blog/brooke-cagle--uHVRvDr7pg-unsplash.jpg" />
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="column-2 bg-light">
+                        <h2>Blog 1</h2>
+                        <p class="meta">
+                            <i class="fas fa-user"></i>Yazan <strong>Krem Şanti</strong> | Mayıs 19 2022
+                        </p>
+                        <p>
+                            İş yerinde pygmalion etkisi nedir?<br />
+                            Duyduğumuz inançlar kendiliğinden gerçekleşebilir mi? Kulağa bir kehanet gibi gelse de evet, bu durumun tam karşılığı Pygmalion etkisi yani; kendi kendini gerçekleştiren kehanet. Peki pygmalion etkisi ne demek? Bu kavramın iş hayatımızla ne gibi bir ilişkisi olabilir? Daha fazla merak ettirmeden hemen başlayalım.
+                        </p>
+                        <a href="#" class="btn btn-dark">
+                            <i class="fas fa-chevron"></i>
+                            Daha Fazla
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="flex-columns flex-reverse">
+            <div class="row">
+                <div class="column">
+                    <div class="column-1">
+                        <img src="~/Data/image_resources/blog/elevate-nYgy58eb9aw-unsplash.jpg" />
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="column-2 bg-dark">
+                        <h2>Blog 2</h2>
+                        <p class="meta">
+                            <i class="fas fa-user"></i>Yazan <strong>Jane Doe</strong> | Mart 25 2022
+                        </p>
+                        <p>
+                            Uluslararası İnsan Kaynakları Gününüz Kutlu Olsun<br />
+                            Avrupa İnsan Yönetimi Derneği tarafından ilan edilen Uluslararası İnsan Kaynakları Günü, 2019 yılından bu yana her 20 Mayıs’ta kutlanıyor. Sektör ne olursa olsun hayati bir role sahip, kurum ve kuruluşlar için olumlu katkılarda bulunan tüm İK profesyonellerinin Uluslararası İnsan Kaynakları Günü kutlu olsun! İyi ki varsınız.
+                        </p>
+                        <a href="#" class="btn btn-light">
+                            <i class="fas fa-chevron"></i>
+                            Daha Fazla
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="flex-columns">
+            <div class="row">
+                <div class="column">
+                    <div class="column-1">
+                        <img src="~/Data/image_resources/blog/nastuh-abootalebi-yWwob8kwOCk-unsplash.jpg" />
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="column-2 bg-light">
+                        <h2>Blog 3</h2>
+                        <p class="meta">
+                            <i class="fas fa-user"></i>Yazan <strong>Cengiz Bond</strong> | Haziran 23 2021
+                        </p>
+                        <p>
+                            Teknoloji şirketleri için İK ipuçları<br />
+                            Teknoloji durmayan yenilik ve gelişimi ifade eder. Başarının sürekli inovasyonla anıldığı teknoloji şirketlerinde ise stratejiler ve tüm organizasyonların etkin bir şekilde ilerlemesi için zorluklarla başa edebilme cesareti yüklüdür. Bir teknoloji şirketinin ihtiyaçlar piramidinde insan kaynakları, temel sıralarda görülmese bile en kritik rollerden birini üstleniyor. O halde gelin, sizler için hazırladığımız teknoloji şirketlerinde İK ipuçlarına bir göz atalım.
+                        </p>
+                        <a href="#" class="btn btn-dark">
+                            <i class="fas fa-chevron"></i>
+                            Daha Fazla
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer bg-dark">
+        <div style="text-align:center" class="social">
+            <a href="https://www.linkedin.com/in/ridvan-sunger34/"><i class="fab fa-linkedin fa-2x"></i> Rıdvan SÜNGER</a>
+            <a href="https://www.linkedin.com/in/selcukarslann/"><i class="fab fa-linkedin fa-2x"></i> Selçuk ARSLAN</a>
+            <a href="https://www.linkedin.com/in/kocum-salih/"><i class="fab fa-linkedin fa-2x"></i> Salih KOÇ</a>
+            <a href="https://www.linkedin.com/in/%C3%B6mer-salih-kanra-293b30bb/"><i class="fab fa-linkedin fa-2x"></i> Ömer Salih KANRA</a>
+        </div>
+        <p style="text-align:center">Copyright &copy;2022-HRSaaS</p>
+    </footer>
+    <script>
+        const navbar = document.getElementById('navbar');
+        let scrolled = false
+
+        window.onscroll = function () {
+            if (window.pageYOffset > 100) {
+                navbar.classList.remove('top');
+                if (!scrolled) {
+                    navbar.style.transform = 'translateY(-70px)';
+                }
+                setTimeout(function () {
+                    navbar.style.transform = 'translateY(0)';
+                    scrolled = true;
+                }, 200)
+            } else {
+                navbar.classList.add('top');
+                scrolled = false;
+            }
+        };
+    </script>
+</body>
+</html>

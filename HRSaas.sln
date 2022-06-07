@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32428.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSaas.Core", "HRSaas.Core\HRSaas.Core.csproj", "{AF0B97FD-92D8-4807-96D8-27C794EFA65E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSaas.Business", "HRSaas.Business\HRSaas.Business.csproj", "{87DC99BB-6A52-4420-9A9D-EEDCD1D03B1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSaas.DAL", "HRSaas.DAL\HRSaas.DAL.csproj", "{A384977C-4D7F-4446-9742-16FB3603164D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSaas.Entities", "HRSaas.Entities\HRSaas.Entities.csproj", "{C9705B3A-7C09-442E-BCA4-E8A4AE12CDF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSaas.UI", "HRSaas.UI\HRSaas.UI.csproj", "{011E4189-F1CE-4407-A9F6-7DEB3A26442A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF0B97FD-92D8-4807-96D8-27C794EFA65E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF0B97FD-92D8-4807-96D8-27C794EFA65E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF0B97FD-92D8-4807-96D8-27C794EFA65E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF0B97FD-92D8-4807-96D8-27C794EFA65E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87DC99BB-6A52-4420-9A9D-EEDCD1D03B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87DC99BB-6A52-4420-9A9D-EEDCD1D03B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87DC99BB-6A52-4420-9A9D-EEDCD1D03B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87DC99BB-6A52-4420-9A9D-EEDCD1D03B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A384977C-4D7F-4446-9742-16FB3603164D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A384977C-4D7F-4446-9742-16FB3603164D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A384977C-4D7F-4446-9742-16FB3603164D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A384977C-4D7F-4446-9742-16FB3603164D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9705B3A-7C09-442E-BCA4-E8A4AE12CDF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9705B3A-7C09-442E-BCA4-E8A4AE12CDF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9705B3A-7C09-442E-BCA4-E8A4AE12CDF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9705B3A-7C09-442E-BCA4-E8A4AE12CDF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011E4189-F1CE-4407-A9F6-7DEB3A26442A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011E4189-F1CE-4407-A9F6-7DEB3A26442A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011E4189-F1CE-4407-A9F6-7DEB3A26442A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011E4189-F1CE-4407-A9F6-7DEB3A26442A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8972C1A6-8D57-4348-ACB8-F4FAD556D41A}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/slckarslan93
+		SccProjectUniqueName0 = HRSaas.Core\\HRSaas.Core.csproj
+		SccProjectName0 = HRSaas.Core
+		SccAuxPath0 = https://dev.azure.com/slckarslan93
+		SccLocalPath0 = HRSaas.Core
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = HRSaas.Business\\HRSaas.Business.csproj
+		SccProjectName1 = HRSaas.Business
+		SccAuxPath1 = https://dev.azure.com/slckarslan93
+		SccLocalPath1 = HRSaas.Business
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

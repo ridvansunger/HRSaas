@@ -1,0 +1,96 @@
+﻿@section Head{
+    @*iCheck for checkboxes and radio inputs
+        <link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+         Select2
+        <link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/select2/css/select2.min.css">
+        <link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+         Bootstrap4 Duallistbox
+        <link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+         BS Stepper
+        <link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/bs-stepper/css/bs-stepper.min.css">
+         dropzonejs
+        <link rel="stylesheet" href="~/lib/AdminLTE-3.2.0/plugins/dropzone/min/dropzone.min.css">*@
+}
+
+@using HRSaas.Entities.Dtos
+@model LeaveVM
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="card card-primary">
+            <div style="background-color: #52006A " class="card-header">
+                <h3 style="color: #FF7600" class="card-title">İzin Talep Sayfası</h3>
+            </div>
+            <div class="col-md-6 mx-auto">
+                <form enctype="multipart/form-data" asp-area="Employee" asp-controller="Leave" asp-action="LeaveAdd">
+                    <input type="hidden" asp-for="PersonalId" />
+                    <div class="card-body">
+                        <input type="hidden" inputmode="numeric" asp-for="Id" value="@(Model==null?0:Model.Id)" />
+                        @*İzin Tipi*@
+                        <div class="form-group">
+                            <label>İzin Tipi</label>
+                            <select asp-for="LeaveTypeId" class="custom-select rounded-0" asp-items="(SelectList)ViewBag.LeaveTypes">
+                                <option value="-1">İzin Tipi Seçiniz.</option>
+                            </select>
+                            <span asp-validation-for="LeaveTypeId" class="text-danger"></span>
+                        </div>
+                        @*İzin başlangıç tarihi*@
+                    <div class="form-group">
+                        <label>İzin Başlangıç Tarihi</label>
+                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                            <input asp-for="LeaveStartDate" type="text" class="form-control datetimepicker-input" data-target="#reservationdate3">
+                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <span asp-validation-for="LeaveStartDate" class="text-danger"></span>
+                    </div>
+                        @*İzin bitiş tarihi*@
+                    <div class="form-group">
+                        <label>İzin Bitiş Tarihi</label>
+                        <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                            <input asp-for="LeaveEndDate" type="text" class="form-control datetimepicker-input" data-target="#reservationdate2">
+                            <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <span asp-validation-for="LeaveEndDate" class="text-danger"></span>
+                    </div>
+
+                        @*Açıklama*@
+                    <div class="form-group">
+                        <label for="Comment">Açıklama</label>
+                        <input class="form-control" asp-for="Comment" placeholder="Açıklamanızı girebilirsiniz">
+                        <span asp-validation-for="Comment" class="text-danger"></span>
+                        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+                    </div>
+                        
+                        <div style="background-color:white;padding-left:0px;" class="card-footer">
+                            <button id="SaveButton" style="background-color: #FFA900; color: #52006A;" type="submit" class="btn">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Script{
+    <!-- bs-custom-file-input -->
+    <script src="~/lib/AdminLTE-3.2.0/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script>
+
+            //Date picker
+        $(function () {
+            $('#reservationdate').datetimepicker({
+                format: 'DD/MM/YYYY'
+            });
+            $('#reservationdate2').datetimepicker({
+                format: 'DD/MM/YYYY'
+            });
+        });
+    </script>
+}
+
+
+

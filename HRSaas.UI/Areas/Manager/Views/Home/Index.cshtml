@@ -1,0 +1,294 @@
+﻿@using HRSaas.Entities.Dtos;
+@model Tuple<IEnumerable<PersonalDetailVm>, IEnumerable<AdvanceVM>, IEnumerable<LeaveVM>, IEnumerable<PersonalExpenditureVM>, PackageVM>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="accordion" id="accordionExample">
+            <div class="card col-md-12">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"aria-expanded="false" aria-controls="collapseTwo">
+                            Mevcut Paket Bilgisi
+                        </button>
+                    </h2>
+                </div>
+                @if (Model.Item5 != null)
+                {
+                    <div >
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-head-fixed text-nowrap table table-hover  ">
+                                <thead>
+                                    <tr>
+                                        <th>Paket</th>
+                                        <th>Kalan Süre</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+
+                                        <tr>
+                                            <td>@Model.Item5.PackageName</td>
+                                            <td>@ViewBag.RemaningTime</td>
+
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="card col-md-12">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
+                            Aktif Personel Tablosu
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapsing" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-head-fixed text-nowrap table table-hover  ">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Ad Soyad</th>
+                                    <th>Departman</th>
+                                    <th>Ünvan</th>
+                                    @*<th>Tc</th>*@
+                                    <th>İşe Başlama Tarihi</th>
+                                    <th>Mail</th>
+                                    <th>Telefon</th>
+                                    <th>Fotoğraf</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    int tableId = 0;
+                                    @foreach (var item in Model.Item1.Where(t0 => t0.PersonalIsActive == true))
+                                    {
+                                        tableId += 1;
+                                        <tr>
+                                            <td>@tableId</td>
+                                            <td>@item.FirstName @item.LastName </td>
+                                            <td>@item.DepertmentName</td>
+                                            <td>@item.TitleName</td>
+                                            @*<td>@item.Tc</td>*@
+                                            @if ((DateTime)item.StartDate != null)
+                                            {
+                                                <td>@(((DateTime)item.StartDate).ToString("dd-MMM-yyyy"))</td>
+                                            }
+                                            <td>@item.Mail</td>
+                                            <td>@item.Phone</td>
+                                            <td><img src="~/Data/Images/@item.Photo" class="img-circle img-size-32 elevation-3" alt=""></td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-md-12">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Pasif Personel Tablosu
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-head-fixed text-nowrap table-hover  ">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Ad Soyad</th>
+                                    <th>Departman</th>
+                                    <th>Ünvan</th>
+                                    @*<th>Tc</th>*@
+                                    <th>İşten Çıkış Tarihi</th>
+                                    <th>Mail</th>
+                                    <th>Telefon</th>
+                                    <th>Fotoğraf</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    int tableId = 0;
+                                    @foreach (var item in Model.Item1.Where(t0 => t0.PersonalIsActive == false))
+                                    {
+                                        tableId += 1;
+                                        <tr>
+                                            <td>@tableId</td>
+                                            <td>@item.FirstName  @item.LastName</td>
+                                            <td>@item.DepertmentName</td>
+                                            <td>@item.TitleName</td>
+                                            @*<td>@item.Tc</td>*@
+                                            @if (item.EndDate != null)
+                                            {
+                                                <td>@(((DateTime)item.EndDate).ToString("dd-MMM-yyyy"))</td>
+                                            }
+                                            <td>@item.Mail</td>
+                                            <td>@item.Phone</td>
+                                            <td><img src="~/Data/Images/@item.Photo" class="img-circle img-size-32 elevation-3" alt=""></td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--avans LİSTELEME-->
+<div class="row">
+    <div class="col-md-4">
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-bullhorn"></i>
+                    Avans Talepleri
+                </h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="#" title="Collapse">
+                        
+                    </button>
+                </div>
+            </div>
+            <div class="card-body table-responsive p-0" style="display: block;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Personel Adı</th>
+                            <th>Departmanı</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.Item2.OrderByDescending(x => x.Id).Take(10))
+                        {
+                            <tr>
+                                <td>@item.NameAndSurname</td>
+                                <td>@item.DepartmentName</td>
+                                <td class="text-right py-0 align-middle">
+                                    <div class="btn-group btn-group-sm">
+                                        <a asp-controller="Advance" asp-action="Index" asp-route-id="@item.Id" class="btn btn-block btn-outline-info btn-sm">Detaya Git</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--İZİN LİSTELEME-->
+    <div class="col-md-4">
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-bullhorn"></i>
+                    İzin Talepleri
+                </h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="#" title="Collapse">
+                        
+                    </button>
+                </div>
+            </div>
+            <div class="card-body table-responsive p-0" style="display: block;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Personel Adı</th>
+                            <th>Departmanı</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Item3.OrderByDescending(t0 => t0.Id).ToList().Take(10))
+                        {
+                            <tr>
+                                <td>@item.NameAndSurname</td>
+                                <td>@item.DepartmentName</td>
+                                <td class="text-right py-0 align-middle">
+                                    <div class="btn-group btn-group-sm">
+                                        <a asp-controller="Leave" asp-action="Index" asp-route-id="@item.Id" class="btn btn-block btn-outline-info btn-sm">Detaya Git</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--Masraf Listeleme-->
+    <div class="col-md-4">
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-bullhorn"></i>
+                    Masraf Talepleri
+                </h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="#" title="Collapse">
+                        
+                    </button>
+                </div>
+            </div>
+            <div class="card-body table-responsive p-0" style="display: block;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Personel Adı</th>
+                            <th>Departmanı</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Item4.OrderByDescending(t0 => t0.Id).ToList().Take(10))
+                        {
+                            <tr>
+                                <td>@item.NameAndSurname</td>
+                                <td>@item.DepartmentName</td>
+                                <td class="text-right py-0 align-middle">
+                                    <div class="btn-group btn-group-sm">
+                                        <a asp-controller="Expenditure" asp-action="Index" asp-route-id="@item.Id" class="btn btn-block btn-outline-info btn-sm">Detaya Git</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Script{
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+}
+
+
